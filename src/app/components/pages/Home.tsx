@@ -275,8 +275,7 @@ export function Home() {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      whileHover={{ scale: 1.05 }}
-      className="aspect-square rounded-[24px] overflow-hidden cursor-pointer shadow-lg border-[3px] border-transparent hover:border-[#1DD87A] transition-all"
+      className="aspect-square rounded-[24px] overflow-hidden cursor-pointer shadow-lg border-[3px] border-transparent hover:border-[#1DD87A]"
     >
       <img 
         src={imgSrc} 

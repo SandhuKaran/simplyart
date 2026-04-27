@@ -118,7 +118,7 @@ export function Events() {
       </section>
 
       {/* Events Grid */}
-      <section className="py-24 px-4 bg-white relative">
+      <section className="py-24 px-20 bg-white relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <motion.p
@@ -132,7 +132,7 @@ export function Events() {
             </motion.p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-2 gap-20">
             {eventTypes.map((event, index) => (
               <motion.div
                 key={event.title}
@@ -141,7 +141,7 @@ export function Events() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 }}
                 whileHover={{ translateY: -8 }}
-                className="bg-white rounded-[40px] overflow-hidden shadow-lg hover:shadow-2xl transition-all border-[3px]"
+                className="bg-white rounded-[40px] overflow-hidden shadow-lg hover:shadow-2xl border-[3px]"
                 style={{ borderColor: event.bgColor }}
               >
                 <div className="p-10 flex flex-col md:flex-row gap-8 items-center md:items-start" style={{ backgroundColor: event.bgColor }}>
@@ -203,8 +203,7 @@ export function Events() {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      whileHover={{ scale: 1.05 }}
-      className="aspect-square rounded-[24px] overflow-hidden cursor-pointer shadow-lg border-[3px] border-transparent hover:border-[#1DD87A] transition-all"
+      className="aspect-square rounded-[24px] overflow-hidden cursor-pointer shadow-lg border-[3px] border-transparent hover:border-[#1DD87A]"
     >
       <img 
         src={imgSrc} 
@@ -302,7 +301,7 @@ export function Events() {
           >
             <Link
               to="/contact"
-              className="inline-block bg-[#2A2540] text-white px-14 py-6 rounded-full text-2xl font-bold hover:bg-[#1DD87A] hover:-translate-y-2 transition-all duration-300 shadow-2xl"
+              className="inline-block bg-[#2A2540] text-white px-14 py-6 rounded-full text-2xl font-bold hover:bg-[#1DD87A] hover:-translate-y-2 duration-300 shadow-2xl"
               style={{ fontFamily: "'Fredoka One', cursive" }}
             >
               Book Your Event Today!
