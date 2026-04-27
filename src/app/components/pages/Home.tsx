@@ -17,12 +17,12 @@ import { IceCreamSVG } from "../art/IceCreamSVG";
 import { Palette, Sparkles, School, Calendar } from "lucide-react";
 
 const galleryImages = [
-  "/src/app/gallery/1.jpg", 
-  "/src/app/gallery/2.jpg",
-  "/src/app/gallery/3.jpg", 
-  "/src/app/gallery/4.jpg",
-  "/src/app/gallery/5.jpg",
-  "/src/app/gallery/6.jpg"
+  "/gallery/1.jpg", 
+  "/gallery/2.jpg",
+  "/gallery/3.jpg", 
+  "/gallery/4.jpg",
+  "/gallery/5.jpg",
+  "/gallery/6.jpg"
 ];
 
 export function Home() {
@@ -178,7 +178,7 @@ export function Home() {
   className="bg-gradient-to-br from-[#D4F7E7] to-[#EDE0FF] rounded-[40px] p-4 shadow-xl h-96"
 >
   <video 
-    src="/src/app/gallery/1.mp4" 
+    src="/gallery/1.mp4" 
     autoPlay 
     loop 
     muted 

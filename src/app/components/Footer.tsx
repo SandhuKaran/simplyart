@@ -6,7 +6,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
-            <img src="/src/imports/logo.png" alt="SIMPLYART Logo" className="h-14 mb-4 brightness-0 invert" />
+            <img src="/gallery/logo.png" alt="SIMPLYART Logo" className="h-14 mb-4 brightness-0 invert" />
             <p className="text-white/60 leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
               Art for kids | Positive creativity for growing minds
             </p>

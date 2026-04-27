@@ -7,12 +7,12 @@ import { Calendar, PartyPopper, Cake, School } from "lucide-react";
 import { Link } from "react-router";
 
 const galleryImages = [
-  "/src/app/gallery/1.jpg", 
-  "/src/app/gallery/2.jpg",
-  "/src/app/gallery/3.jpg", 
-  "/src/app/gallery/4.jpg",
-  "/src/app/gallery/5.jpg",
-  "/src/app/gallery/6.jpg"
+  "/gallery/1.jpg", 
+  "/gallery/2.jpg",
+  "/gallery/3.jpg", 
+  "/gallery/4.jpg",
+  "/gallery/5.jpg",
+  "/gallery/6.jpg"
 ];
 
 export function Events() {

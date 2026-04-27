@@ -156,7 +156,7 @@ export function About() {
   className="bg-gradient-to-br from-[#D4F7E7] to-[#EDE0FF] rounded-[40px] p-4 shadow-xl h-96"
 >
   <video 
-    src="/src/app/gallery/2.mp4" 
+    src="/gallery/2.mp4" 
     autoPlay 
     loop 
     muted 
