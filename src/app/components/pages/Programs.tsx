@@ -130,7 +130,7 @@ export function Programs() {
       </section>
 
       {/* Programs Grid */}
-      <section className="py-24 px-16 bg-white relative">
+      <section className="py-24 px-4 bg-white relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <motion.p

@@ -118,7 +118,7 @@ export function Events() {
       </section>
 
       {/* Events Grid */}
-      <section className="py-24 px-20 bg-white relative">
+      <section className="py-24 px-8 bg-white relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <motion.p
