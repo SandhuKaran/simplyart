@@ -96,14 +96,14 @@ export function Home() {
           >
             <Link
               to="/contact"
-              className="inline-block bg-[#1DD87A] text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-[#14A85E] hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-block bg-[#1DD87A] text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-[#14A85E] hover:-translate-y-1 duration-300 shadow-lg hover:shadow-xl"
               style={{ fontFamily: "'Fredoka One', cursive" }}
             >
               Book Your Event
             </Link>
             <Link
               to="/programs"
-              className="inline-block bg-transparent text-[#2A2540] border-[3px] border-[#2A2540] px-10 py-5 rounded-full text-xl font-bold hover:bg-[#2A2540] hover:text-white transition-all duration-300"
+              className="inline-block bg-transparent text-[#2A2540] border-[3px] border-[#2A2540] px-10 py-5 rounded-full text-xl font-bold hover:bg-[#2A2540] hover:text-white duration-300"
               style={{ fontFamily: "'Fredoka One', cursive" }}
             >
               See Programs
@@ -222,7 +222,7 @@ export function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 whileHover={{ translateY: -8 }}
-                className="bg-white rounded-[40px] p-10 shadow-lg hover:shadow-2xl transition-all cursor-pointer border-t-[5px]"
+                className="bg-white rounded-[40px] p-10 shadow-lg hover:shadow-2xl cursor-pointer border-t-[5px]"
                 style={{ borderColor: service.iconBg }}
               >
                 <div className="w-20 h-20 rounded-[24px] flex items-center justify-center mb-6" style={{ background: service.bgColor }}>
@@ -334,7 +334,7 @@ export function Home() {
           >
             <Link
               to="/contact"
-              className="inline-block bg-[#2A2540] text-white px-14 py-6 rounded-full text-2xl font-bold hover:bg-[#1DD87A] hover:-translate-y-2 transition-all duration-300 shadow-2xl"
+              className="inline-block bg-[#2A2540] text-white px-14 py-6 rounded-full text-2xl font-bold hover:bg-[#1DD87A] hover:-translate-y-2 duration-300 shadow-2xl"
               style={{ fontFamily: "'Fredoka One', cursive" }}
             >
               Contact Us Today!
