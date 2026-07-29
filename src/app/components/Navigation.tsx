@@ -1,95 +1,148 @@
-import { Link, useLocation } from "react-router";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router';
+import { AnimatePresence, motion } from 'motion/react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+
+import { cx } from './site/Primitives';
+
+const navLinks = [
+  { path: '/', label: 'Home' },
+  { path: '/about', label: 'About' },
+  { path: '/programs', label: 'Programs' },
+  { path: '/events', label: 'Events' },
+  { path: '/contact', label: 'Contact' },
+];
 
 export function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [lifted, setLifted] = useState(false);
   const location = useLocation();
 
-  const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
-    { path: "/programs", label: "Programs" },
-    { path: "/events", label: "Events" },
-    { path: "/contact", label: "Contact" },
-  ];
+  useEffect(() => {
+    const onScroll = () => setLifted(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
+  useEffect(() => setOpen(false), [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
 
   return (
-    <nav className="bg-[#FFFBF5]/96 backdrop-blur-md shadow-lg sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <Link to="/" className="flex items-center space-x-3">
-            <img src="/gallery/logo.png" alt="SIMPLYART Logo" className="h-16 w-auto" />
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6 md:pt-6">
+        <nav
+          className={cx(
+            'mx-auto flex w-full max-w-6xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 ease-out-soft md:px-5',
+            lifted
+              ? 'border border-white/10 bg-ink-900/70 shadow-lift backdrop-blur-xl'
+              : 'border border-transparent bg-transparent',
+          )}
+        >
+          <Link to="/" className="flex shrink-0 items-center" aria-label="SIMPLYART home">
+            <img src="/gallery/logo.png" alt="SIMPLYART" className="h-9 w-auto md:h-10" />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-base font-bold px-4 py-2 rounded-full transition-all duration-200 ${
-                  isActive(link.path)
-                    ? "bg-[#D4F7E7] text-[#14A85E]"
-                    : "text-[#2A2540] hover:bg-[#D4F7E7] hover:text-[#14A85E]"
-                }`}
-                style={{ fontFamily: "'Nunito', sans-serif" }}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div className="hidden items-center gap-1 md:flex">
+            {navLinks.map((link) => {
+              const active = location.pathname === link.path;
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={cx(
+                    'relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300',
+                    active ? 'text-ink-950' : 'text-paper/65 hover:text-paper',
+                  )}
+                >
+                  {active ? (
+                    <motion.span
+                      layoutId="nav-active"
+                      className="absolute inset-0 rounded-full bg-brand-400"
+                      transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                    />
+                  ) : null}
+                  <span className="relative z-10">{link.label}</span>
+                </Link>
+              );
+            })}
           </div>
 
-          <Link
-            to="/contact"
-            className="hidden md:inline-flex items-center bg-[#1DD87A] text-white px-6 py-3 rounded-full font-bold hover:bg-[#14A85E] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
-            style={{ fontFamily: "'Fredoka One', cursive" }}
-          >
-            Book Now
-          </Link>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-[#2A2540]"
-          >
-            {isOpen ? <X size={32} /> : <Menu size={32} />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden pb-4 space-y-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={`block py-3 text-lg font-bold rounded-lg px-4 ${
-                  isActive(link.path)
-                    ? "bg-[#D4F7E7] text-[#14A85E]"
-                    : "text-[#2A2540] hover:bg-[#D4F7E7]"
-                }`}
-                style={{ fontFamily: "'Nunito', sans-serif" }}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div className="flex items-center gap-2">
             <Link
               to="/contact"
-              onClick={() => setIsOpen(false)}
-              className="block bg-[#1DD87A] text-white px-4 py-3 rounded-lg font-bold text-center mt-4"
-              style={{ fontFamily: "'Fredoka One', cursive" }}
+              className="group hidden items-center gap-1.5 rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-paper transition-all duration-300 hover:border-brand-400/70 hover:bg-white/[0.06] md:inline-flex"
             >
-              Book Now
+              Book a visit
+              <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5" />
             </Link>
+
+            <button
+              type="button"
+              onClick={() => setOpen((value) => !value)}
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-paper transition-colors hover:bg-white/[0.06] md:hidden"
+            >
+              {open ? <X size={18} /> : <Menu size={18} />}
+            </button>
           </div>
-        )}
-      </div>
-    </nav>
+        </nav>
+      </header>
+
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            className="fixed inset-0 z-40 bg-ink-950/95 backdrop-blur-xl md:hidden"
+          >
+            <div className="flex h-full flex-col justify-center px-8">
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.path}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.06 * index + 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Link
+                    to={link.path}
+                    className={cx(
+                      'block border-b border-white/8 py-5 font-display text-4xl transition-colors',
+                      location.pathname === link.path ? 'text-brand-400' : 'text-paper',
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="mt-10"
+              >
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-8 py-4 font-semibold text-ink-950"
+                >
+                  Book a visit
+                  <ArrowUpRight size={17} />
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </>
   );
 }

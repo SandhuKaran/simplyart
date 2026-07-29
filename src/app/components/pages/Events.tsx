@@ -1,314 +1,189 @@
-import { motion } from "motion/react";
-import { AnimatedArt } from "../AnimatedArt";
-import { ButterflySVG } from "../art/ButterflySVG";
-import { RainbowSVG } from "../art/RainbowSVG";
-import { SunSVG } from "../art/SunSVG";
-import { Calendar, PartyPopper, Cake, School } from "lucide-react";
-import { Link } from "react-router";
+import { ArrowUpRight, Cake, CalendarDays, PartyPopper, School } from 'lucide-react';
 
-const galleryImages = [
-  "/gallery/1.jpg", 
-  "/gallery/2.jpg",
-  "/gallery/3.jpg", 
-  "/gallery/4.jpg",
-  "/gallery/5.jpg",
-  "/gallery/6.jpg"
+import { Reveal } from '../site/Reveal';
+import { ButtonLink, DarkSection, PaperSection, SectionHeading } from '../site/Primitives';
+import { PageHero } from '../site/PageHero';
+import { GalleryStrip } from '../site/GalleryStrip';
+
+const eventTypes = [
+  {
+    icon: Cake,
+    title: 'Birthday parties',
+    description:
+      'A creative party where the birthday child leads the theme and every guest goes home holding something they made.',
+    highlights: [
+      '2–3 hour sessions',
+      'Themed art projects',
+      'Decorations included',
+      'An extra project for the birthday child',
+      'Groups of 8–15',
+    ],
+  },
+  {
+    icon: School,
+    title: 'School events',
+    description:
+      'Art stations for fairs, fun days and fundraisers. We scale the setup to the size of your crowd.',
+    highlights: [
+      'Flexible duration',
+      'Multiple art stations',
+      'Large group capacity',
+      'Setup and cleanup included',
+      'Works well for fundraisers',
+    ],
+  },
+  {
+    icon: PartyPopper,
+    title: 'Community events',
+    description:
+      'Festivals, libraries and community centres — drop-in making that keeps a crowd engaged for hours.',
+    highlights: [
+      'All ages welcome',
+      'Customisable activities',
+      'Professional setup',
+      'Built for continuous flow',
+      'Bilingual signage on request',
+    ],
+  },
+  {
+    icon: CalendarDays,
+    title: 'Private groups',
+    description:
+      'Homeschool groups, playgroups and family gatherings. A session shaped entirely around your group.',
+    highlights: [
+      'Small group friendly',
+      'Custom themes available',
+      'Your location or ours',
+      'Flexible scheduling',
+      'Ideal for special occasions',
+    ],
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      'Best birthday party we have hosted. The kids were completely absorbed and everyone left with something beautiful.',
+    name: 'Parent, Mississauga',
+  },
+  {
+    quote:
+      'SIMPLYART made our school fair. The art station had a queue all afternoon and the teachers did nothing but watch.',
+    name: 'School administrator',
+  },
+  {
+    quote:
+      'Our homeschool group looks forward to these all month. Patient instructors, genuinely ambitious projects.',
+    name: 'Homeschool co-op lead',
+  },
 ];
 
 export function Events() {
-  const eventTypes = [
-    {
-      title: "Birthday Parties",
-      icon: Cake,
-      description: "Make their special day unforgettable with a creative art party! Perfect for ages 4-12.",
-      highlights: [
-        "2-3 hour sessions",
-        "Themed art projects",
-        "Party decorations",
-        "Birthday child gets extra special project",
-        "Group sizes 8-15 kids",
-      ],
-      bgColor: "#FFE0E0",
-      accentColor: "#FF6B6B",
-    },
-    {
-      title: "School Events",
-      icon: School,
-      description: "Art stations for school fairs, fun days, and special celebrations. We bring the creativity!",
-      highlights: [
-        "Flexible duration",
-        "Multiple art stations",
-        "Large group capacity",
-        "Setup and cleanup included",
-        "Perfect for fundraisers",
-      ],
-      bgColor: "#EDE0FF",
-      accentColor: "#B47FFF",
-    },
-    {
-      title: "Community Events",
-      icon: PartyPopper,
-      description: "Festivals, community centers, libraries, and more. Art experiences for everyone!",
-      highlights: [
-        "All ages welcome",
-        "Customizable activities",
-        "Professional setup",
-        "Engaging for crowds",
-        "Memorable experiences",
-      ],
-      bgColor: "#FFF5C0",
-      accentColor: "#FFD43B",
-    },
-    {
-      title: "Private Groups",
-      icon: Calendar,
-      description: "Homeschool groups, playgroups, or family gatherings. Custom art experiences just for you!",
-      highlights: [
-        "Small group friendly",
-        "Custom themes available",
-        "Your location or ours",
-        "Flexible scheduling",
-        "Perfect for special occasions",
-      ],
-      bgColor: "#D4F7E7",
-      accentColor: "#1DD87A",
-    },
-  ];
-
   return (
-    <div className="overflow-x-hidden bg-[#FFFBF5]">
-      {/* Hero Section */}
-      <section className="relative min-h-[400px] bg-gradient-to-br from-[#FFF5C0] via-[#F8F0FF] to-[#D4F7E7] flex items-center justify-center overflow-hidden">
-        <div className="absolute top-10 left-10 opacity-20">
-          <AnimatedArt>
-            <ButterflySVG />
-          </AnimatedArt>
-        </div>
-        <div className="absolute bottom-0 right-20 opacity-20">
-          <AnimatedArt delay={0.3}>
-            <RainbowSVG />
-          </AnimatedArt>
-        </div>
-        {/* <div className="absolute top-20 right-32">
-          <AnimatedArt delay={0.5}>
-            <SunSVG />
-          </AnimatedArt>
-        </div> */}
-
-        <div className="relative z-10 text-center px-4">
-          <motion.h1
-            className="text-6xl md:text-7xl font-bold text-[#2A2540] mb-4"
-            style={{ fontFamily: "'Fredoka One', cursive" }}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Special Events
-          </motion.h1>
-          <motion.p
-            className="text-xl text-[#3D3A52] font-bold"
-            style={{ fontFamily: "'Nunito', sans-serif" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            Bringing creativity to your celebrations
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Events Grid */}
-      <section className="py-24 px-8 bg-white relative">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <motion.p
-              className="text-2xl text-[#7D7A96] max-w-3xl mx-auto"
-              style={{ fontFamily: "'Nunito', sans-serif" }}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              Celebrate with art! We bring the creativity, supplies, and instructors directly to your special occasion.
-            </motion.p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-20">
-            {eventTypes.map((event, index) => (
-              <motion.div
-                key={event.title}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
-                whileHover={{ translateY: -8 }}
-                className="bg-white rounded-[40px] overflow-hidden shadow-lg hover:shadow-2xl border-[3px]"
-                style={{ borderColor: event.bgColor }}
-              >
-                <div className="p-10 flex flex-col md:flex-row gap-8 items-center md:items-start" style={{ backgroundColor: event.bgColor }}>
-                  <div className="flex-shrink-0 bg-white p-6 rounded-[24px] shadow-sm">
-                    <event.icon size={48} style={{ color: event.accentColor }} />
-                  </div>
-                  <div className="text-center md:text-left">
-                    <h3 className="text-4xl font-bold text-[#2A2540] mb-3" style={{ fontFamily: "'Fredoka One', cursive" }}>
-                      {event.title}
-                    </h3>
-                    <p className="text-[#3D3A52] text-lg font-semibold" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                      {event.description}
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="p-10 bg-white">
-                  <h4 className="text-xl font-bold mb-6 uppercase tracking-wider text-[#7D7A96] text-sm" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                    What to expect:
-                  </h4>
-                  <ul className="space-y-4">
-                    {event.highlights.map((highlight) => (
-                      <li key={highlight} className="flex items-start text-[#3D3A52] font-bold text-lg" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                        <span className="text-2xl mr-3 flex-shrink-0" style={{ color: event.accentColor }}>✨</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery Section */}
-      <section className="py-24 px-4 bg-[#2A2540] text-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="inline-block bg-[#1DD87A] text-white px-6 py-2 rounded-full font-extrabold uppercase text-sm tracking-widest mb-6" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              See The Fun
-            </span>
-            <motion.h2
-              className="text-5xl md:text-6xl font-bold"
-              style={{ fontFamily: "'Fredoka One', cursive" }}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              Event Highlights
-            </motion.h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-  {galleryImages.map((imgSrc, index) => (
-    <motion.div
-      key={imgSrc}
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="aspect-square rounded-[24px] overflow-hidden cursor-pointer shadow-lg border-[3px] border-transparent hover:border-[#1DD87A]"
-    >
-      <img 
-        src={imgSrc} 
-        alt={`SimplyArt Event ${index + 1}`} 
-        className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+    <div className="relative">
+      <PageHero
+        eyebrow="Special events"
+        title={
+          <>
+            Celebrations that
+            <br />
+            <span className="text-brand-400">leave something behind.</span>
+          </>
+        }
+        lead="We bring the creativity, the supplies and the instructors directly to your occasion — and take the mess with us when we go."
       />
-    </motion.div>
-  ))}
-</div>
+
+      {/* Event types */}
+      <DarkSection>
+        <SectionHeading
+          eyebrow="What we host"
+          title="Four kinds of celebration"
+          className="mb-16 max-w-2xl"
+        />
+
+        <div className="grid gap-4 md:grid-cols-2">
+          {eventTypes.map((event, index) => (
+            <Reveal key={event.title} delay={(index % 2) * 0.08}>
+              <article className="card-dark h-full p-9 transition-colors duration-500 hover:border-brand-400/35">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-brand-400">
+                  <event.icon size={20} strokeWidth={1.6} />
+                </span>
+
+                <h3 className="mt-8 font-display text-h3 text-paper">{event.title}</h3>
+                <p className="mt-3.5 text-[0.95rem] leading-relaxed text-muted-on-dark">
+                  {event.description}
+                </p>
+
+                <ul className="mt-8">
+                  {event.highlights.map((highlight) => (
+                    <li
+                      key={highlight}
+                      className="flex items-center gap-3.5 border-t border-white/8 py-3 text-[0.92rem] text-paper/75 last:border-b"
+                    >
+                      <span className="h-1 w-1 shrink-0 rounded-full bg-brand-400" />
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </Reveal>
+          ))}
         </div>
-      </section>
+      </DarkSection>
+
+      {/* Gallery */}
+      <DarkSection>
+        <SectionHeading
+          eyebrow="Event highlights"
+          title="A look at recent sessions"
+          className="mb-16 max-w-2xl"
+        />
+        <GalleryStrip />
+      </DarkSection>
 
       {/* Testimonials */}
-      <section className="py-24 px-4 bg-[#FFFBF5]">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <motion.h2
-              className="text-5xl md:text-6xl font-bold text-[#2A2540]"
-              style={{ fontFamily: "'Fredoka One', cursive" }}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              What Parents Say
-            </motion.h2>
-          </div>
+      <PaperSection>
+        <SectionHeading
+          tone="light"
+          eyebrow="What people say"
+          title="Told to us afterwards"
+          className="max-w-2xl"
+        />
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                quote: "Best birthday party ever! The kids were so engaged and everyone left with beautiful artwork.",
-                name: "Happy Parent",
-                color: "#1DD87A"
-              },
-              {
-                quote: "SIMPLYART made our school fair a huge success. The art station was the most popular activity!",
-                name: "School Administrator",
-                color: "#B47FFF"
-              },
-              {
-                quote: "Our homeschool group loves these sessions. The instructors are patient and the projects are amazing!",
-                name: "Homeschool Parent",
-                color: "#FFD43B"
-              },
-            ].map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
-                className="bg-white rounded-[40px] p-8 shadow-lg border-t-[5px]"
-                style={{ borderColor: testimonial.color }}
-              >
-                <div className="text-4xl mb-6 text-[#FFD43B]">⭐⭐⭐⭐⭐</div>
-                <p className="text-lg text-[#3D3A52] font-semibold mb-6 leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
-                  "{testimonial.quote}"
-                </p>
-                <p className="text-[#2A2540] font-bold text-lg" style={{ fontFamily: "'Fredoka One', cursive" }}>
-                  - {testimonial.name}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+        <div className="mt-16 grid gap-px overflow-hidden rounded-card bg-ink-900/10 md:grid-cols-3">
+          {testimonials.map((testimonial, index) => (
+            <Reveal key={testimonial.name} delay={index * 0.08} className="bg-paper p-9">
+              <span className="font-display text-5xl leading-none text-brand-500">&ldquo;</span>
+              <p className="mt-5 text-[1.02rem] leading-relaxed text-ink-900/85">
+                {testimonial.quote}
+              </p>
+              <p className="mt-8 text-sm text-muted-on-light">{testimonial.name}</p>
+            </Reveal>
+          ))}
         </div>
-      </section>
+      </PaperSection>
 
-      {/* CTA Section */}
-      <section className="py-24 px-4 bg-gradient-to-br from-[#D4F7E7] via-[#EDE0FF] to-[#FFF5C0] text-center relative overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <motion.h2
-            className="text-5xl md:text-6xl font-bold mb-6 text-[#2A2540]"
-            style={{ fontFamily: "'Fredoka One', cursive" }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            Let's Plan Your Event!
-          </motion.h2>
-          <motion.p
-            className="text-2xl mb-10 text-[#3D3A52] font-bold"
-            style={{ fontFamily: "'Nunito', sans-serif" }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            Whether it's a birthday, school celebration, or community event, we'll make it special!
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-          >
-            <Link
-              to="/contact"
-              className="inline-block bg-[#2A2540] text-white px-14 py-6 rounded-full text-2xl font-bold hover:bg-[#1DD87A] hover:-translate-y-2 duration-300 shadow-2xl"
-              style={{ fontFamily: "'Fredoka One', cursive" }}
-            >
-              Book Your Event Today!
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      <DarkSection className="text-center">
+        <Reveal>
+          <h2 className="mx-auto max-w-2xl font-display text-h1 text-paper">
+            Let's plan your event.
+          </h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <p className="mx-auto mt-7 max-w-lg text-lead text-muted-on-dark">
+            Give us a date, an age range and a rough headcount — we will send back a plan.
+          </p>
+        </Reveal>
+        <Reveal delay={0.18} className="mt-12 flex flex-wrap justify-center gap-3">
+          <ButtonLink to="/contact">
+            Book your event
+            <ArrowUpRight size={17} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </ButtonLink>
+          <ButtonLink to="/programs" variant="outlineDark">
+            See programs
+          </ButtonLink>
+        </Reveal>
+      </DarkSection>
     </div>
   );
 }
